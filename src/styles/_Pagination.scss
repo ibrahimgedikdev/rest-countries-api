@@ -1,0 +1,20 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    .pagination-list {
+        list-style-type: none;
+        margin: 0.25rem;
+        .pagination-link {
+            cursor: pointer;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+    }
+}

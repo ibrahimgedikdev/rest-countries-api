@@ -1,0 +1,78 @@
+$bg-dark : #2c3e50;
+$text-dark : #fff;
+$bg-ligth : #fff;
+$text-light : #2c3e50;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Radio Canada', sans-serif;
+    background-color: $bg-dark;
+}
+
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+
+@keyframes ldio-l53b49yt6y {
+  0% { transform: translate(-50%,-50%) rotate(0deg); }
+  100% { transform: translate(-50%,-50%) rotate(360deg); }
+}
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    .ldio-l53b49yt6y div {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border: 10px solid #ffffff;
+        border-top-color: transparent;
+        border-radius: 50%;
+      }
+      .ldio-l53b49yt6y div {
+        animation: ldio-l53b49yt6y 1s linear infinite;
+        top: 50px;
+        left: 50px
+      }
+      .loadingio-spinner-rolling-r3dp7lp55jq {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        overflow: hidden;
+        background: none;
+      }
+      .ldio-l53b49yt6y {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: translateZ(0) scale(1);
+        backface-visibility: hidden;
+        transform-origin: 0 0; /* see note above */
+      }
+      .ldio-l53b49yt6y div { box-sizing: content-box; }
+}

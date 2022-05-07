@@ -1,0 +1,36 @@
+.country-card {
+    list-style-type: none;
+    width: 100%;
+    box-shadow: rgba(16, 21, 27, 0.2) 0px 8px 24px;
+    a {
+        text-decoration: none;
+    }
+    &-header {
+        .country-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            @media (max-width:576px){
+                height: 100%;
+            }
+        }
+    }
+    &-body {
+        padding: 1rem;
+        .country-details {
+            .country-name {
+                color: #fff;
+                font-size: 18px;
+                margin-bottom: 1rem;
+            }
+            .country-detail {
+                font-size: 15px;
+                color:#fff;
+                margin-bottom: 0.25rem;
+                b {
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+    }
+}

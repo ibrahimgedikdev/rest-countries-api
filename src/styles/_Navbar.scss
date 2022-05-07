@@ -1,0 +1,12 @@
+.navbar {
+    box-shadow: rgba(8, 46, 76, 0.2) 0px 8px 24px;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+        .logo {
+            color: #fff;
+        }
+    }
+}

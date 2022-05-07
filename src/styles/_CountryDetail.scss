@@ -1,0 +1,107 @@
+.country-detail-section {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    .back-button {
+        background-color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        color: $bg-dark;
+        font-weight: 600;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1.5rem;
+
+        @media (max-width:768px) {
+            grid-template-columns: 1fr;
+        }
+
+        .country-detail-left {
+            .country-image {
+                width: 100%;
+                border-radius: 5px;
+            }
+
+            .languages {
+                margin-top: 1rem;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+
+                b {
+                    color: #fff;
+                    margin-right: 0.75rem;
+                    margin-bottom: 0.5rem;
+
+                }
+
+                .badges {
+                    border: 1px solid rgba(255, 255, 255, 0.818);
+                    ;
+                    background-color: transparent;
+                    color: rgba(255, 255, 255, 0.818);
+                    ;
+                    display: inline-block;
+                    padding: 0.25rem 0.5rem;
+                    border-radius: 5px;
+                    margin-right: 0.5rem;
+                    margin-bottom: 0.5rem;
+
+                }
+            }
+
+            .borders {
+                margin-top: 1rem;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+
+                b {
+                    color: #fff;
+                    margin-right: 0.75rem;
+                    margin-bottom: 0.5rem;
+
+                }
+
+                .badges {
+                    border: 1px solid rgba(255, 255, 255, 0.818);
+                    ;
+                    background-color: transparent;
+                    color: rgba(255, 255, 255, 0.818);
+                    ;
+                    display: inline-block;
+                    padding: 0.25rem 0.5rem;
+                    border-radius: 5px;
+                    margin-right: 0.5rem;
+                    margin-bottom: 0.5rem;
+
+                }
+            }
+        }
+
+        .country-detail-right {
+            .country-name {
+                color: #fff;
+                font-size: 24px;
+                margin-bottom: 1.5rem;
+            }
+
+            .country-detail-item {
+                margin-bottom: 0.75rem;
+
+                b {
+                    color: #fff;
+                }
+
+                span {
+                    color: rgba(255, 255, 255, 0.818);
+                }
+            }
+        }
+    }
+}

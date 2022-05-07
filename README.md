@@ -1,70 +1,193 @@
-# Getting Started with Create React App
+import { Col, Row } from "react-bootstrap";
+import ReactPaginate from "react-paginate";
+import { useState } from "react";
+import BulletinList from "./components/BulletinList";
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+const App = () => {
+  const [bulletins] = useState([
+    {
+      bbID: 1,
+      liveStatus: "live",
+      title: "Bulletin 1",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 20
+    },
+    {
+      bbID: 2,
+      liveStatus: "live",
+      title: "Bulletin 2",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 3
+    },
+    {
+      bbID: 3,
+      liveStatus: "end",
+      title: "Bulletin 3",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 28
+    },
+    {
+      bbID: 4,
+      liveStatus: "live",
+      title: "Bulletin 4",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 17
+    },
+    {
+      bbID: 5,
+      liveStatus: "live",
+      title: "Bulletin 5",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 20
+    },
+    {
+      bbID: 6,
+      liveStatus: "live",
+      title: "Bulletin 6",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 3
+    },
+    {
+      bbID: 7,
+      liveStatus: "end",
+      title: "Bulletin 7",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 28
+    },
+    {
+      bbID: 8,
+      liveStatus: "live",
+      title: "Bulletin 8",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 17
+    },
+    {
+      bbID: 9,
+      liveStatus: "live",
+      title: "Bulletin 9",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 20
+    },
+    {
+      bbID: 10,
+      liveStatus: "live",
+      title: "Bulletin 10",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 3
+    },
+    {
+      bbID: 11,
+      liveStatus: "end",
+      title: "Bulletin 11",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 28
+    },
+    {
+      bbID: 12,
+      liveStatus: "live",
+      title: "Bulletin 12",
+      createdDate: "2021-07-28 12:00:00",
+      createdBy: "Mary",
+      viewCount: 17
+    }
+  ]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
 
-## Available Scripts
+  const bulletinsPerPage = 8;
+  const pagesVisited = pageNumber * bulletinsPerPage;
 
-In the project directory, you can run:
+  const displayBulletins = bulletins
+    .filter((bulletin) => {
+      if (searchTerm === "") {
+        return bulletin;
+      } else if (
+        bulletin.title.toLowerCase().includes(searchTerm.toLowerCase())
+      ) {
+        return bulletin;
+      }
+      return false;
+    })
+    .slice(pagesVisited, pagesVisited + bulletinsPerPage)
+    .map((bulletin) => {
+      return (
+        <>
+          <BulletinList key={bulletin.bbID} bulletin={bulletin} />
+        </>
+      );
+    });
 
-### `npm start`
+  const pageCount = Math.ceil(
+    bulletins.filter((bulletin) => {
+      if (searchTerm === "") {
+        return bulletin;
+      } else if (
+        bulletin.title.toLowerCase().includes(searchTerm.toLowerCase())
+      ) {
+        return bulletin;
+      }
+      return false;
+    }).length / bulletinsPerPage
+  );
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  const handlePageChange = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  return (
+    <>
+      <div className="search-wrapper">
+        <div className="btn btn-primary" style={{ marginBottom: "20px" }}>
+          Create New
+        </div>
+        <label for="search-form">
+          <input
+            type="search"
+            className="search-input"
+            placeholder="Search..."
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              handlePageChange({ selected: 0 });
+            }}
+          />
+        </label>
+      </div>
+      <Row xs={1} md={4} className="g-4">
+        {displayBulletins}
+      </Row>
+      <Row>
+        <Col className="bulletinPagination" md={12}>
+          <ReactPaginate
+            previousLabel={"<"}
+            nextLabel={">"}
+            pageCount={pageCount}
+            onPageChange={handlePageChange}
+            breakClassName={"page-item"}
+            breakLinkClassName={"page-link"}
+            containerClassName={"pagination"}
+            pageClassName={"page-item"}
+            pageLinkClassName={"page-link"}
+            previousClassName={"page-item"}
+            previousLinkClassName={"page-link"}
+            nextClassName={"page-item"}
+            nextLinkClassName={"page-link"}
+            activeClassName={"active"}
+          />
+        </Col>
+      </Row>
+    </>
+  );
+};
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default App;
