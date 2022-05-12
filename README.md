@@ -2,7 +2,7 @@
 
 Country data lookup application built with React and based on the REST Countries API
 
-<img src="weather-app-28a584.netlify.app_-min.png" width="65%">
+<img src="ss.png" width="65%">
 
 #### Packages I use.
 - react-router-dom
